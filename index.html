@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<title>Notepad Clone v1</title>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="./index.js"></script>
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body onload="load_text()">
+    <label class="badge badge-primary lg">
+        Open    
+        <input type="file" name="fileSelector"id="fileSelector">
+    </label>
+    <script>
+        document.getElementById('fileSelector').addEventListener('change', function() {
+        var fr = new FileReader();
+        fr.onload=function(){
+            document.getElementById('output').value = fr.result;
+        }
+        fr.readAsText(this.files[0]);
+    })
+    </script>
+
+<div class="form-group">
+    <label for="usr">Name:</label>
+    <input type="text" class="form-control" id="usr">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+
+    <input id="button1" type="button" value="bold" name="button1" style="font-weight: bold; width: 75px; height: 24px" size="28" onclick="bold_click()">
+    <input type="button" value="Italicize" style="width: 75px; font-style: italic; height: 24px" size="30" onclick="italic_click()">
+    <input id="button1" style="width: 75px; height: 24px; text-decoration: underline" type="button" size="8" value="Underline" name="button1" onclick="underline_click()">
+    <input id="button1" style="width: 100px; height: 24px;" type="button" size="8" value="Clear styles" name="button1" onclick="normal_click()">
+    <br>
+    <br>
+    <textarea style="width: 399px; height: 182px" id="output" name="output" rows="9" wrap="virtual" cols=48></textarea><br>
+</body>
+
+</html>
+
